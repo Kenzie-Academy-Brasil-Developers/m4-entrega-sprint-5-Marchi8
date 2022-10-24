@@ -18,7 +18,6 @@ const scheduleListService = async (id: string) => {
         throw new AppError("Property Not Found", 404)
     }
 
-    console.log(property)
     return property
 }
 
