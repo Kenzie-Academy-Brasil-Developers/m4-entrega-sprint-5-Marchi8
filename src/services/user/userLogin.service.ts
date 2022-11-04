@@ -6,7 +6,7 @@ import jwt from "jsonwebtoken";
 import "dotenv/config";
 import { AppError } from "../../errors/appError";
 
-const userLoginService = async ({ email, password }: IUserLogin): Promise<String> => {
+const userLoginService = async ({ email, password }: IUserLogin): Promise<string> => {
     const userRepository = AppDataSource.getRepository(User)
 
     const users = await userRepository.findOneBy({ email: email })

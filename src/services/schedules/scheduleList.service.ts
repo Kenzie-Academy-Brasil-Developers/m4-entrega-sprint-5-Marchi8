@@ -2,7 +2,7 @@ import AppDataSource from "../../data-source";
 import { Properties } from "../../entities/properties.entities";
 import { AppError } from "../../errors/appError";
 
-const scheduleListService = async (id: string) => {
+const scheduleListService = async (id: string): Promise<Properties>  => {
     const propertiesRepository = AppDataSource.getRepository(Properties)
 
     const property = await propertiesRepository.findOne({
@@ -18,7 +18,6 @@ const scheduleListService = async (id: string) => {
         throw new AppError("Property Not Found", 404)
     }
 
-    console.log(property)
     return property
 }
 

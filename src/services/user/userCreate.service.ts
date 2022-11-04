@@ -4,7 +4,7 @@ import { User } from "../../entities/user.entity";
 import bcrypt from "bcryptjs";
 import { AppError } from "../../errors/appError";
 
-const userCreateService = async ({ name, email, password, isAdm }: IUserRequest) => {
+const userCreateService = async ({ name, email, password, isAdm }: IUserRequest): Promise<object> => {
     const userRepository = AppDataSource.getRepository(User)
 
     const users = await userRepository.find()

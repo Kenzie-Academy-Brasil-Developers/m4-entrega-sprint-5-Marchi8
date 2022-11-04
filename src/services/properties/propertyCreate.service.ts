@@ -5,7 +5,7 @@ import { Properties } from "../../entities/properties.entities";
 import { AppError } from "../../errors/appError";
 import { IPropertyRequest } from "../../interfaces/properties";
 
-const propertyCreateService = async ({ size, value, address, categoryId }: IPropertyRequest) => {
+const propertyCreateService = async ({ size, value, address, categoryId }: IPropertyRequest): Promise<Properties> => {
     const propertiesRepository = AppDataSource.getRepository(Properties)
     const addressRepository = AppDataSource.getRepository(Addresses)
     const categoryRepository = AppDataSource.getRepository(Categories)
@@ -39,7 +39,7 @@ const propertyCreateService = async ({ size, value, address, categoryId }: IProp
         zipCode: address.zipCode,
         number: address.number
     })
-    
+
     await addressRepository.save(newAddress)
 
     const newProperty = propertiesRepository.create({

@@ -2,7 +2,7 @@ import AppDataSource from "../../data-source";
 import { User } from "../../entities/user.entity";
 import { AppError } from "../../errors/appError";
 
-const userDeleteService = async (id: string) => {
+const userDeleteService = async (id: string): Promise<Boolean> => {
     const userRepository = AppDataSource.getRepository(User)
 
     const users = await userRepository.findOneBy({ id: id })
